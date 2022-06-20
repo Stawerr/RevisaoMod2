@@ -1,3 +1,19 @@
+@if (session('status'))
+    <div class="alert
+    @switch(session('type'))
+    @case('error')
+        alert-danger
+@break
+    @default
+        alert-success
+@endswitch
+        alert-dismissible fade show" role="alert">
+        {{ session('status') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@endif
 <h1>Bicycles</h1>
 <table class="table table-striped table-dark">
     <thead>

@@ -14,7 +14,7 @@ class CountryController extends Controller
      */
     public function index()
     {
-        $countries = Country::all();
+        $countries = Country::orderBy('id','asc')->paginate(15);
         return view('pages.countries.index',['countries'=>$countries]);
     }
 
@@ -25,7 +25,8 @@ class CountryController extends Controller
      */
     public function create()
     {
-        //
+        $countries = Country::orderBy('id','asc')->get();
+        return view('pages.countries.create',['countries'=>$countries]);
     }
 
     /**
@@ -36,7 +37,14 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name'        => 'required',
+        ]);
+
+        Country::create([
+            'name'        => $request->name,
+        ]);
+        return redirect('countries')->with('status','Country created successfully!');
     }
 
     /**
@@ -47,7 +55,7 @@ class CountryController extends Controller
      */
     public function show(Country $country)
     {
-        //
+        return view('pages.countries.show',['country'=>$country]);
     }
 
     /**
@@ -58,7 +66,7 @@ class CountryController extends Controller
      */
     public function edit(Country $country)
     {
-        //
+        return view('pages.countries.edit',['country'=>$country]);
     }
 
     /**
@@ -70,7 +78,8 @@ class CountryController extends Controller
      */
     public function update(Request $request, Country $country)
     {
-        //
+        $country->update($request->all());
+        return redirect('countries')->with('status','Item edited successfully!');
     }
 
     /**
@@ -81,6 +90,12 @@ class CountryController extends Controller
      */
     public function destroy(Country $country)
     {
-        //
+        try {
+            $country->delete();
+            return redirect('countries')->with('status','Item deleted successfully!')->with('type', 'success');
+        }
+        catch (\Exception $exception){
+            return redirect('countries')->with('status',$exception->getMessage())->with('type', 'error');
+        }
     }
 }

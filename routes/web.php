@@ -28,3 +28,12 @@ Route::get('/bicycles/{bicycle}/edit','BicycleController@edit');
 Route::put('/bicycles/{bicycle}', 'BicycleController@update');
 Route::delete('/bicycles/{bicycle}', 'BicycleController@destroy');
 Route::get('/bicycles/{bicycle}','BicycleController@show');
+
+
+Route::get('/countries','CountryController@index');
+Route::get('/countries/create','CountryController@create');
+Route::post('/countries/','CountryController@store');
+Route::get('/countries/{country}/edit','CountryController@edit');
+Route::put('/countries/{country}', 'CountryController@update');
+Route::delete('/countries/{country}', 'CountryController@destroy');
+Route::get('/countries/{country}','CountryController@show');

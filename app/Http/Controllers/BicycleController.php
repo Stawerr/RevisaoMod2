@@ -16,6 +16,7 @@ class BicycleController extends Controller
     public function index()
     {
         $bicycles = Bicycle::orderBy('id','asc')->paginate(15);
+
         return view('pages.bicycles.index',['bicycles'=>$bicycles]);
     }
 

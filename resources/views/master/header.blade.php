@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-    <a class="navbar-brand" href="#">Cars</a>
+    <a class="navbar-brand" href="#">RevisõesMOD2</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -13,7 +13,7 @@
                 <a class="dropdown-item" href="{{url('users/create')}}">Add User</a>
             </div>
         </div>
-        <div class="dropdown">
+        <div class="dropdown pr-2">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
                 Bicycle
             </button>
@@ -22,7 +22,17 @@
                 <a class="dropdown-item" href="{{url('bicycles/create')}}">Add Bicycle</a>
             </div>
         </div>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                Country
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="{{url('countries')}}">Countries</a>
+                <a class="dropdown-item" href="{{url('countries/create')}}">Add Country</a>
+            </div>
+        </div>
     </div>
+
     <form class="form-inline my-2 my-lg-0" action="{{url('users')}}" method="GET" role="search">
         <input class="form-control mr-sm-2" name="search" id="search" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
